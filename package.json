@@ -1,0 +1,39 @@
+{
+  "name": "sfcalc-cn",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@actions/core": "1.6.0",
+    "@nuxtjs/axios": "5.13.6",
+    "autoprefixer": "10.4.2",
+    "core-js": "3.21.1",
+    "lodash": "4.17.21",
+    "nuxt": "2.15.8",
+    "postcss": "8.4.6",
+    "sass": "1.49.8",
+    "sass-loader": "10.2.1",
+    "tailwindcss": "3.0.23",
+    "vue": "2.6.14",
+    "vue-tailwind": "2.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.17.5",
+    "@babel/eslint-parser": "7.17.0",
+    "@nuxt/types": "2.15.8",
+    "@nuxtjs/eslint-config": "8.0.0",
+    "@nuxtjs/eslint-module": "3.0.2",
+    "@nuxtjs/tailwindcss": "4.2.1",
+    "@tailwindcss/forms": "^0.4.0",
+    "axios": "0.26.0",
+    "eslint": "8.9.0",
+    "eslint-plugin-nuxt": "3.1.0",
+    "eslint-plugin-vue": "8.5.0"
+  }
+}
