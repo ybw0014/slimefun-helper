@@ -31,7 +31,9 @@ export default {
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [],
+    plugins: [
+        '@/plugins/clipboard.js'
+    ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
@@ -47,7 +49,9 @@ export default {
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios'
+        '@nuxtjs/axios',
+        // https://www.npmjs.com/package/vue-sweetalert2
+        'vue-sweetalert2/nuxt'
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build

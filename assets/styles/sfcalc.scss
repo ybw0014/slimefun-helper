@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~sweetalert2/src/variables';
+@import '~sweetalert2/src/sweetalert2';
+
 // 滚动条
 body::-webkit-scrollbar{
     width: 5px;
@@ -18,6 +21,8 @@ body::-webkit-scrollbar-track{
 
 body{
     font-family: AlibabaPuHuiTi, sans-serif;
+    @apply bg-gray-100;
+    @apply dark:bg-gray-700;
 }
 
 a{
@@ -29,6 +34,10 @@ hr{
     @apply dark:border-gray-600;
 }
 .page-wrapper{
-    @apply bg-gray-100 min-h-screen;
-    @apply dark:bg-gray-700;
+    @apply min-h-screen;
+}
+code{
+    @apply bg-gray-200 rounded p-1;
+    @apply dark:bg-gray-500;
+    font-size: 80%;
 }

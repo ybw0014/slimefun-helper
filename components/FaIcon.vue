@@ -12,6 +12,10 @@ export default {
         icon: {
             type: String,
             default: ''
+        },
+        spinner: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
@@ -35,6 +39,9 @@ export default {
                 break
             default:
                 break
+            }
+            if (this.spinner) {
+                classes.push('fa-spin')
             }
             return classes // _.join(classes, ' ')
         }

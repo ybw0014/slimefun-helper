@@ -1,0 +1,86 @@
+{
+    "slimefun:multiblock": {
+        "disableInCalc": true,
+        "name": "多方块结构"
+    },
+    "slimefun:enhanced_crafting_table": {
+        "name": "增强型工作台",
+        "link": "https://slimefun-wiki.guizhanss.cn/Enhanced-Crafting-Table"
+    },
+    "slimefun:grind_stone": {
+        "name": "磨石",
+        "link": "https://slimefun-wiki.guizhanss.cn/Grind-Stone"
+    },
+    "slimefun:armor_forge": {
+        "name": "盔甲锻造台",
+        "link": "https://slimefun-wiki.guizhanss.cn/Armor-Forge"
+    },
+    "slimefun:ore_crusher": {
+        "name": "矿石粉碎机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Ore-Crusher"
+    },
+    "slimefun:compressor": {
+        "name": "压缩机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Compressor"
+    },
+    "slimefun:smeltery": {
+        "name": "冶炼炉",
+        "link": "https://slimefun-wiki.guizhanss.cn/Smeltery"
+    },
+    "slimefun:pressure_chamber": {
+        "name": "压力机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Pressure-Chamber"
+    },
+    "slimefun:magic_workbench": {
+        "name": "魔法工作台",
+        "link": "https://slimefun-wiki.guizhanss.cn/Magic-Workbench"
+    },
+    "slimefun:ore_washer": {
+        "name": "洗矿机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Ore-Washer"
+    },
+    "slimefun:gold_pan": {
+        "name": "淘金盘",
+        "link": "https://slimefun-wiki.guizhanss.cn/Gold-Pan"
+    },
+    "slimefun:juicer": {
+        "name": "榨汁机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Juicer"
+    },
+    "slimefun:heated_pressure_chamber": {
+        "name": "加热压力舱",
+        "link": "https://slimefun-wiki.guizhanss.cn/Heated-Pressure-Chamber"
+    },
+    "infinityexpansion:singularity_constructor": {
+        "name": "奇点构造机",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Singularity-Constructor"
+    },
+    "infinityexpansion:infinity_forge": {
+        "name": "无尽工作台",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Infinity-Forge"
+    },
+    "slimetinker:dummy-table": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂教程",
+        "link": "https://slimetinker-wiki.guizhanss.cn/"
+    },
+    "slimetinker:dummy-smeltery": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂冶炼炉",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "slimetinker:dummy-smeltery-alloy": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂冶炼炉",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "slimetinker:dummy-smeltery-molten": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂冶炼炉",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    }
+}
