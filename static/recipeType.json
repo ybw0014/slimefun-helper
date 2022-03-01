@@ -66,6 +66,20 @@
         "disableInCalc": true,
         "name": "交易获得"
     },
+    "slimefun:oil_pump": {
+        "disableInCalc": true,
+        "name": "原油泵",
+        "link": "https://slimefun-wiki.guizhanss.cn/Oil-Pump"
+    },
+    "slimefun:geo_miner": {
+        "disableInCalc": true,
+        "name": "自然资源开采机",
+        "link": "https://slimefun-wiki.guizhanss.cn/GEO-Miner"
+    },
+    "slimefun:nuclear_reactor": {
+        "name": "核反应堆",
+        "link": "https://slimefun-wiki.guizhanss.cn/Reactors"
+    },
     "infinityexpansion:infinity_forge": {
         "name": "无尽工作台",
         "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Infinity-Forge"
@@ -78,6 +92,10 @@
         "disableInCalc": true,
         "name": "虚空微粒发生器",
         "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Void-Harvester"
+    },
+    "infinityexpansion:mob_data_infuser": {
+        "name": "模拟器合成机",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Mob-Simulation?id=data-infuser"
     },
     "infinityexpansion:storage_forge": {
         "name": "存储单元工作台",
@@ -116,6 +134,18 @@
         "disableInSearch": true,
         "name": "匠魂冶炼炉",
         "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "litexpansion:rubber_synthesizer": {
+        "name": "橡胶合成机"
+    },
+    "litexpansion:metal_forge": {
+        "name": "金属冶炼炉"
+    },
+    "litexpansion:refined_smeltery": {
+        "name": "精炼炉"
+    },
+    "litexpansion:mass_fabricator": {
+        "name": "物质生成机"
     },
     "foxymachines:quest": {
         "disableInCalc": true,

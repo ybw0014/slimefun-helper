@@ -224,7 +224,7 @@ export default {
 
             let idMode = false
 
-            let specialCases = ['GPS']
+            let specialCases = ['GPS', 'UU']
             // 是否为 ID
             if (search.match(/^[0-9a-zA-Z_]+$/) && !_.includes(specialCases, search)) {
                 idMode = true
@@ -238,6 +238,10 @@ export default {
                 _.forEach(this.itemsJson, (item, key) => {
                     // 禁用的搜索配方
                     if (this?.recipesJson[item.recipeType]?.disableInSearch) {
+                        return true
+                    }
+                    // 禁用的物品
+                    if (this?.itemSettingsJson[item.id]?.disable) {
                         return true
                     }
                     // 禁用的物品前缀

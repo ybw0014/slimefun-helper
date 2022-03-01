@@ -10,5 +10,11 @@
     },
     "ENDER_LUMP_1": {
         "disableInCalc": true
+    },
+    "FLUFFYMACHINES_INFO": {
+        "disable": true
+    },
+    "UU_MATTER": {
+        "disableInCalc": true
     }
 }
