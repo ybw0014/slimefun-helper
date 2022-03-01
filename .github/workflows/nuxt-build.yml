@@ -47,5 +47,5 @@ jobs:
         with:
           personal_token: ${{ secrets.BOT_TOKEN }}
           publish_dir: ./dist
-          user_name: ${{ secrets.BOT_USER }}
+          user_name: ${{ secrets.BOT_USERNAME }}
           user_email: ${{ secrets.BOT_EMAIL }}
