@@ -1,10 +1,9 @@
 {
     "slimefun:null": {
-        "disableInCalc": true,
+        "disableInSearch": true,
         "name": "空配方"
     },
     "slimefun:multiblock": {
-        "disableInCalc": true,
         "name": "多方块结构"
     },
     "slimefun:enhanced_crafting_table": {
