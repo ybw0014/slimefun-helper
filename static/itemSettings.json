@@ -1,4 +1,10 @@
 {
+    "settings": {
+        "disabledItemPrefix": [
+            "GHOST_BLOCK_",
+            "PART_"
+        ]
+    },
     "MAGIC_LUMP_1": {
         "disableInCalc": true
     },

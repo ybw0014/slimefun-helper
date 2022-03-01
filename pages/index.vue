@@ -240,6 +240,13 @@ export default {
                     if (this?.recipesJson[item.recipeType]?.disableInSearch) {
                         return true
                     }
+                    // 禁用的物品前缀
+                    let prefixs = this?.itemSettingsJson?.settings?.disabledItemPrefix
+                    for (const i in prefixs) {
+                        if (item.id.startsWith(prefixs[i])) {
+                            return true
+                        }
+                    }
                     if (idMode) {
                         if (item.id === search) {
                             searchResult.push([key, item])
@@ -253,7 +260,7 @@ export default {
             this.searchResult = searchResult
 
             if (this.searchResultSize === 0) {
-                this.alert('danger', '没有任何结果。如果你输入的是ID，请确保ID是完整的')
+                this.alert('danger', '没有任何结果。物品可能不存在或已被列入黑名单中。如果你输入的是ID，请确保ID是完整的。')
             } else if (this.searchResultSize === 1) {
                 this.searchResult = null
                 this.showItemInfo(searchResult[0][0])

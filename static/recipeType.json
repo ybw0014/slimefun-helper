@@ -89,6 +89,16 @@
         "name": "匠魂教程",
         "link": "https://slimetinker-wiki.guizhanss.cn/"
     },
+    "slimetinker:dummy-workbench": {
+        "disable": true,
+        "name": "匠魂合成站",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Workstations?id=tinkers-workbench"
+    },
+    "slimetinker:tinkers-workbench": {
+        "disable": true,
+        "name": "匠魂合成站",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Workstations?id=tinkers-workbench"
+    },
     "slimetinker:dummy-smeltery": {
         "disable": true,
         "disableInSearch": true,
