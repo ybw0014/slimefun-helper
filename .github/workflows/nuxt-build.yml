@@ -1,0 +1,51 @@
+name: Nuxt Build
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - master
+  repository_dispatch:
+    types: [nuxt-build]
+
+jobs:
+  build:
+    if: startsWith(github.event.head_commit.message, '[CI skip]') == false
+    name: Nuxt build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup node
+        uses: actions/setup-node@v3.0.0
+        with:
+          node-version: '16.13.0'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache node_modules
+        uses: actions/cache@v2.1.7
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate static site
+        run: yarn generate
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.BOT_TOKEN }}
+          publish_dir: ./dist
+          user_name: ${{ secrets.BOT_USER }}
+          user_email: ${{ secrets.BOT_EMAIL }}
