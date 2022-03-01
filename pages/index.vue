@@ -179,14 +179,14 @@ export default {
             this.itemsJson = response.data
             this.itemsLoaded = true
             this.$refs.search.isDisabled = false
-
-            if (this.item !== '') {
-                this.onQuery()
-            }
         }).catch((error) => {
             this.$refs.search.isDisabled = true
             console.error('无法加载物品列表', error)
             this.alert('danger', '无法加载物品列表')
+        }).then(() => {
+            if (!_.isEmpty(this.item)) {
+                this.onQuery()
+            }
         })
         /* eslint-enable no-console */
     },
@@ -216,8 +216,8 @@ export default {
             this.alert()
             this.itemResult = null
 
-            let search = this.item.trim()
-            if (search === '') {
+            let search = this.item?.trim()
+            if (_.isEmpty(search)) {
                 this.alert('warning', '请输入物品名称或ID')
                 return
             }
