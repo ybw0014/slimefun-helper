@@ -136,5 +136,14 @@
         "disableInCalc": true,
         "name": "钓鱼",
         "link": "https://foxymachines-wiki.guizhanss.cn/#/Poseidons-Fishing-Rod"
+    },
+    "geneticchickengineering:gce_from_net": {
+        "disableInCalc": true,
+        "name": "鸡网捕捉"
+    },
+    "geneticchickengineering:gce_from_chicken": {
+        "disableInCalc": true,
+        "name": "鸡 你 太 美",
+        "link": "https://www.bilibili.com/video/av51818204"
     }
 }
