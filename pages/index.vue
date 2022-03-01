@@ -3,7 +3,7 @@
         <form @submit.prevent="onQuery">
             <form-input v-model="item" class="mt-2 mb-3" placeholder="在此输入物品名称或ID" autofocus />
             <div class="flex flex-col items-center">
-                <a-button ref="submit" class="inline-block" :disabled="true" @click="onQuery">
+                <a-button ref="search" class="inline-block" :disabled="true" @click="onQuery">
                     查询
                     <fa-icon v-show="searching" type="duotone" icon="spinner-third" spinner />
                 </a-button>
@@ -22,7 +22,7 @@
                 </p>
                 <ul>
                     <li v-for="result in searchResult" :key="result[0]" class="search-item">
-                        <a href="javascript:void(0)" :title="result[1].name" @click="showItemInfo(result[0])">
+                        <a href="javascript:void(0)" :title="result[1].name" @click="searchItem(result[1].id, true)">
                             {{ result[1].name }}
                         </a>
                     </li>
@@ -33,9 +33,9 @@
         <transition name="fade">
             <div v-if="itemResult !== null" class="text-base">
                 <hr class="my-2">
-                <a v-show="searchResultSize > 0" href="javascript:void(0)" @click="showSearchResult()">
+                <a href="javascript:history.go(-1)">
                     <fa-icon type="solid" icon="arrow-left" />
-                    返回搜索结果
+                    返回上一页
                 </a>
                 <p class="para-title">
                     物品信息
@@ -81,6 +81,31 @@
                 <p class="para-title">
                     材料计算
                 </p>
+                <form @submit.prevent="onCalc">
+                    <p>在下方输入计算数量:</p>
+                    <form-input v-model="amount" type="number" min="1" class="mt-2 mb-3" placeholder="计算数量" />
+                    <div class="flex flex-col items-center">
+                        <a-button ref="submit" class="inline-block" :disabled="calculating" @click="onCalc">
+                            计算
+                            <fa-icon v-show="calculating" type="duotone" icon="spinner-third" spinner />
+                        </a-button>
+                    </div>
+                </form>
+                <div v-if="calcDisplay !== null">
+                    <p class="para-title">
+                        所需材料
+                    </p>
+                    <table class="table calc-table">
+                        <tr v-for="(recipeItem, key) in calcDisplay" :key="key">
+                            <td>
+                                {{ recipeItem.name }}
+                            </td>
+                            <td>
+                                {{ recipeItem.amount }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <hr class="mt-2 mb-4">
             </div>
         </transition>
@@ -89,6 +114,7 @@
 
 <script>
 import _ from 'lodash'
+
 export default {
     layout: 'main',
     data () {
@@ -106,7 +132,13 @@ export default {
             itemResult: null,
             recipeTypeDisplay: '',
             recipeDisplay: [],
-            recipes: {}
+            recipes: {},
+            //
+            amount: 1,
+            calculating: false,
+            calcResult: {},
+            calcDict: {},
+            calcDisplay: null
         }
     },
     computed: {
@@ -124,6 +156,7 @@ export default {
             this.item = ''
         }
 
+        /* eslint-disable no-console */
         this.$axios.get('/recipeType.json').then((response) => {
             this.recipesJson = response.data
         }).catch((error) => {
@@ -132,36 +165,39 @@ export default {
         this.$axios.get('/items.json').then((response) => {
             this.itemsJson = response.data
             this.itemsLoaded = true
-            this.$refs.submit.isDisabled = false
+            this.$refs.search.isDisabled = false
 
             if (this.item !== '') {
                 this.onQuery()
             }
         }).catch((error) => {
-            this.$refs.submit.isDisabled = true
+            this.$refs.search.isDisabled = true
             console.error('无法加载物品列表', error)
             this.alert('danger', '无法加载物品列表')
         })
+        /* eslint-enable no-console */
     },
     methods: {
-        onQuery () {
+        searchItem (item, inRecipe) {
+            this.item = item
+            this.onQuery(inRecipe)
+        },
+        onQuery (updateRoute) {
             if (!this.itemsLoaded || this.searching) {
                 return
             }
-            this.$refs.submit.isDisabled = true
+            this.$refs.search.isDisabled = true
             this.searching = true
 
+            if (updateRoute) {
+                this.updateRoute(this.item)
+            }
+
             this.search()
+            this.calcDisplay = null
 
             this.searching = false
-            this.$refs.submit.isDisabled = false
-        },
-        searchItem (item, inRecipe) {
-            this.item = item
-            if (inRecipe) {
-                this.updateRoute(item)
-            }
-            this.onQuery()
+            this.$refs.search.isDisabled = false
         },
         search () {
             this.alert()
@@ -226,9 +262,7 @@ export default {
         },
         showItemInfo (key) {
             this.itemResult = this.itemsJson[key]
-            this.displayRecipe()
-        },
-        displayRecipe () {
+
             // recipe type
             let recipeType = this.itemResult.recipeType
             if (!!this.recipesJson && recipeType in this.recipesJson) {
@@ -307,6 +341,110 @@ export default {
         routeChange (e) {
             if (this.$route.query.item !== this.item) {
                 this.searchItem(this.$route.query.item)
+            }
+        },
+        onCalc () {
+            // limit
+            if (this.amount < 1) {
+                this.amount = 1
+            }
+
+            this.calculating = true
+            this.calc().then(() => {
+                this.calculating = false
+                console.log('Done')
+            })
+        },
+        calc () {
+            return new Promise(() => {
+                // calc
+                this.calcResult = {}
+
+                if (!(this.itemResult.id in this.calcDict)) {
+                    this.calcDict[this.itemResult.id] = this.itemResult.name
+                }
+                this.addToCalcResult(this.itemResult.id)
+
+                let nextItem
+                while (true) {
+                    nextItem = this.findNextItem()
+                    if (nextItem == null) {
+                        break
+                    }
+
+                    let amount = this.calcResult[nextItem.id]
+                    this.addToCalcResult(nextItem.id, -amount)
+                    _.forEach(nextItem.recipe, (recipeItem) => {
+                        if (recipeItem == null) {
+                            return true
+                        }
+                        if (!(recipeItem.material in this.calcDict)) {
+                            this.calcDict[recipeItem.material] = recipeItem.name
+                        }
+                        let recipeAmount = recipeItem.amount
+                        if (recipeAmount === undefined) {
+                            recipeAmount = 1
+                        }
+                        this.addToCalcResult(recipeItem.material, recipeAmount * amount)
+                    })
+                }
+
+                // filter result
+                this.calcResult = _.omitBy(this.calcResult, (n) => { return n === 0 })
+
+                this.calcDisplay = []
+
+                _.forEach(this.calcResult, (amount, recipeItem) => {
+                    let currItem = null
+                    _.forEach(this.itemsJson, (item) => {
+                        if (item.id === recipeItem) {
+                            currItem = item
+                            return false
+                        }
+                    })
+                    if (currItem === null) {
+                        this.calcDisplay.push({
+                            name: this.calcDict[recipeItem],
+                            amount: amount * this.amount
+                        })
+                    } else {
+                        this.calcDisplay.push({
+                            name: currItem.name,
+                            id: currItem.id,
+                            amount: amount * this.amount
+                        })
+                    }
+                })
+
+                this.calculating = false
+            })
+        },
+        findNextItem () {
+            let result = null
+            _.forEach(this.calcResult, (recipeAmount, recipeItem) => {
+                _.forEach(this.itemsJson, (item) => {
+                    if (item.id === recipeItem &&
+                        recipeAmount > 0 &&
+                        !(this?.recipesJson[item.recipeType]?.disableInCalc)
+                    ) {
+                        result = item
+                        return false
+                    }
+                })
+                if (result !== null) {
+                    return false
+                }
+            })
+            return result
+        },
+        addToCalcResult (key, amount) {
+            if (amount === undefined) {
+                amount = 1
+            }
+            if (key in this.calcResult) {
+                this.calcResult[key] += amount
+            } else {
+                this.calcResult[key] = amount
             }
         }
     }

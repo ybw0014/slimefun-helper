@@ -16,6 +16,7 @@
         "link": "https://slimefun-wiki.guizhanss.cn/Armor-Forge"
     },
     "slimefun:ore_crusher": {
+        "disableInCalc": true,
         "name": "矿石粉碎机",
         "link": "https://slimefun-wiki.guizhanss.cn/Ore-Crusher"
     },
@@ -36,10 +37,12 @@
         "link": "https://slimefun-wiki.guizhanss.cn/Magic-Workbench"
     },
     "slimefun:ore_washer": {
+        "disableInCalc": true,
         "name": "洗矿机",
         "link": "https://slimefun-wiki.guizhanss.cn/Ore-Washer"
     },
     "slimefun:gold_pan": {
+        "disableInCalc": true,
         "name": "淘金盘",
         "link": "https://slimefun-wiki.guizhanss.cn/Gold-Pan"
     },
@@ -47,17 +50,38 @@
         "name": "榨汁机",
         "link": "https://slimefun-wiki.guizhanss.cn/Juicer"
     },
+    "slimefun:ancient_altar": {
+        "name": "古代祭坛",
+        "link": "https://slimefun-wiki.guizhanss.cn/Ancient-Altar"
+    },
     "slimefun:heated_pressure_chamber": {
         "name": "加热压力舱",
         "link": "https://slimefun-wiki.guizhanss.cn/Heated-Pressure-Chamber"
+    },
+    "slimefun:mob_drop": {
+        "disableInCalc": true,
+        "name": "生物掉落"
+    },
+    "slimefun:barter_drop": {
+        "disableInCalc": true,
+        "name": "交易获得"
+    },
+    "infinityexpansion:infinity_forge": {
+        "name": "无尽工作台",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Infinity-Forge"
     },
     "infinityexpansion:singularity_constructor": {
         "name": "奇点构造机",
         "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Singularity-Constructor"
     },
-    "infinityexpansion:infinity_forge": {
-        "name": "无尽工作台",
-        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Infinity-Forge"
+    "infinityexpansion:void_harvester": {
+        "disableInCalc": true,
+        "name": "虚空微粒发生器",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Void-Harvester"
+    },
+    "infinityexpansion:storage_forge": {
+        "name": "存储单元工作台",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Barrels?id=storage-forge"
     },
     "slimetinker:dummy-table": {
         "disable": true,

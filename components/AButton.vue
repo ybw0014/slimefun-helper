@@ -78,5 +78,8 @@ export default {
     &:not(.disabled){
         @apply hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-700;
     }
+    &.disabled{
+        @apply hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500;
+    }
 }
 </style>
