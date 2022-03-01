@@ -98,7 +98,12 @@
                     <table class="table calc-table">
                         <tr v-for="(recipeItem, key) in calcDisplay" :key="key">
                             <td>
-                                {{ recipeItem.name }}
+                                <a v-if="recipeItem.id !== undefined" href="javascript:void(0)" @click="searchItem(recipeItem.id, true)">
+                                    {{ recipeItem.name }}
+                                </a>
+                                <span v-else>
+                                    {{ recipeItem.name }}
+                                </span>
                             </td>
                             <td>
                                 {{ recipeItem.amount }}
@@ -123,6 +128,7 @@ export default {
             itemsLoaded: false,
             itemsJson: [],
             recipesJson: {},
+            itemSettingsJson: {},
             searching: false,
             showAlert: false,
             alertType: 'primary',
@@ -162,6 +168,13 @@ export default {
         }).catch((error) => {
             console.error('无法加载配方列表', error)
         })
+
+        this.$axios.get('/itemSettings.json').then((response) => {
+            this.itemSettingsJson = response.data
+        }).catch((error) => {
+            console.error('无法加载物品设置列表', error)
+        })
+
         this.$axios.get('/items.json').then((response) => {
             this.itemsJson = response.data
             this.itemsLoaded = true
@@ -425,7 +438,8 @@ export default {
                 _.forEach(this.itemsJson, (item) => {
                     if (item.id === recipeItem &&
                         recipeAmount > 0 &&
-                        !(this?.recipesJson[item.recipeType]?.disableInCalc)
+                        !(this?.recipesJson[item.recipeType]?.disableInCalc) &&
+                        !(this?.itemSettingsJson[item.id]?.disableInCalc)
                     ) {
                         result = item
                         return false

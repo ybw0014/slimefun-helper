@@ -106,5 +106,25 @@
         "disableInSearch": true,
         "name": "匠魂冶炼炉",
         "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "foxymachines:quest": {
+        "disableInCalc": true,
+        "name": "神秘科技任务",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Weapons"
+    },
+    "foxymachines:sacrificial_altar": {
+        "disableInCalc": true,
+        "name": "献祭祭坛",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Sacrificial-Altar"
+    },
+    "foxymachines:mob_drop": {
+        "disableInCalc": true,
+        "name": "生物掉落物",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Mobs"
+    },
+    "foxymachines:fishing": {
+        "disableInCalc": true,
+        "name": "钓鱼",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Poseidons-Fishing-Rod"
     }
 }
