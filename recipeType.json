@@ -1,0 +1,183 @@
+{
+    "slimefun:null": {
+        "disableInCalc": true,
+        "name": "空配方"
+    },
+    "slimefun:multiblock": {
+        "disableInCalc": true,
+        "name": "多方块结构"
+    },
+    "slimefun:enhanced_crafting_table": {
+        "name": "增强型工作台",
+        "link": "https://slimefun-wiki.guizhanss.cn/Enhanced-Crafting-Table"
+    },
+    "slimefun:grind_stone": {
+        "name": "磨石",
+        "link": "https://slimefun-wiki.guizhanss.cn/Grind-Stone"
+    },
+    "slimefun:armor_forge": {
+        "name": "盔甲锻造台",
+        "link": "https://slimefun-wiki.guizhanss.cn/Armor-Forge"
+    },
+    "slimefun:ore_crusher": {
+        "disableInCalc": true,
+        "name": "矿石粉碎机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Ore-Crusher"
+    },
+    "slimefun:compressor": {
+        "name": "压缩机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Compressor"
+    },
+    "slimefun:smeltery": {
+        "name": "冶炼炉",
+        "link": "https://slimefun-wiki.guizhanss.cn/Smeltery"
+    },
+    "slimefun:pressure_chamber": {
+        "name": "压力机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Pressure-Chamber"
+    },
+    "slimefun:magic_workbench": {
+        "name": "魔法工作台",
+        "link": "https://slimefun-wiki.guizhanss.cn/Magic-Workbench"
+    },
+    "slimefun:ore_washer": {
+        "disableInCalc": true,
+        "name": "洗矿机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Ore-Washer"
+    },
+    "slimefun:gold_pan": {
+        "disableInCalc": true,
+        "name": "淘金盘",
+        "link": "https://slimefun-wiki.guizhanss.cn/Gold-Pan"
+    },
+    "slimefun:juicer": {
+        "name": "榨汁机",
+        "link": "https://slimefun-wiki.guizhanss.cn/Juicer"
+    },
+    "slimefun:ancient_altar": {
+        "name": "古代祭坛",
+        "link": "https://slimefun-wiki.guizhanss.cn/Ancient-Altar"
+    },
+    "slimefun:heated_pressure_chamber": {
+        "name": "加热压力舱",
+        "link": "https://slimefun-wiki.guizhanss.cn/Heated-Pressure-Chamber"
+    },
+    "slimefun:mob_drop": {
+        "disableInCalc": true,
+        "name": "生物掉落"
+    },
+    "slimefun:barter_drop": {
+        "disableInCalc": true,
+        "name": "交易获得"
+    },
+    "slimefun:oil_pump": {
+        "disableInCalc": true,
+        "name": "原油泵",
+        "link": "https://slimefun-wiki.guizhanss.cn/Oil-Pump"
+    },
+    "slimefun:geo_miner": {
+        "disableInCalc": true,
+        "name": "自然资源开采机",
+        "link": "https://slimefun-wiki.guizhanss.cn/GEO-Miner"
+    },
+    "slimefun:nuclear_reactor": {
+        "name": "核反应堆",
+        "link": "https://slimefun-wiki.guizhanss.cn/Reactors"
+    },
+    "infinityexpansion:infinity_forge": {
+        "name": "无尽工作台",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Infinity-Forge"
+    },
+    "infinityexpansion:singularity_constructor": {
+        "name": "奇点构造机",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Singularity-Constructor"
+    },
+    "infinityexpansion:void_harvester": {
+        "disableInCalc": true,
+        "name": "虚空微粒发生器",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Void-Harvester"
+    },
+    "infinityexpansion:mob_data_infuser": {
+        "name": "模拟器合成机",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Mob-Simulation?id=data-infuser"
+    },
+    "infinityexpansion:storage_forge": {
+        "name": "存储单元工作台",
+        "link": "https://infinityexpansion-wiki.guizhanss.cn/#/Barrels?id=storage-forge"
+    },
+    "slimetinker:dummy-table": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂教程",
+        "link": "https://slimetinker-wiki.guizhanss.cn/"
+    },
+    "slimetinker:dummy-workbench": {
+        "disable": true,
+        "name": "匠魂合成站",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Workstations?id=tinkers-workbench"
+    },
+    "slimetinker:tinkers-workbench": {
+        "disable": true,
+        "name": "匠魂合成站",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Workstations?id=tinkers-workbench"
+    },
+    "slimetinker:dummy-smeltery": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂冶炼炉",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "slimetinker:dummy-smeltery-alloy": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂冶炼炉",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "slimetinker:dummy-smeltery-molten": {
+        "disable": true,
+        "disableInSearch": true,
+        "name": "匠魂冶炼炉",
+        "link": "https://slimetinker-wiki.guizhanss.cn/#/Tinkers-Smeltery"
+    },
+    "litexpansion:rubber_synthesizer": {
+        "name": "橡胶合成机"
+    },
+    "litexpansion:metal_forge": {
+        "name": "金属冶炼炉"
+    },
+    "litexpansion:refined_smeltery": {
+        "name": "精炼炉"
+    },
+    "litexpansion:mass_fabricator": {
+        "name": "物质生成机"
+    },
+    "foxymachines:quest": {
+        "disableInCalc": true,
+        "name": "神秘科技任务",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Weapons"
+    },
+    "foxymachines:sacrificial_altar": {
+        "disableInCalc": true,
+        "name": "献祭祭坛",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Sacrificial-Altar"
+    },
+    "foxymachines:mob_drop": {
+        "disableInCalc": true,
+        "name": "生物掉落物",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Mobs"
+    },
+    "foxymachines:fishing": {
+        "disableInCalc": true,
+        "name": "钓鱼",
+        "link": "https://foxymachines-wiki.guizhanss.cn/#/Poseidons-Fishing-Rod"
+    },
+    "geneticchickengineering:gce_from_net": {
+        "disableInCalc": true,
+        "name": "鸡网捕捉"
+    },
+    "geneticchickengineering:gce_from_chicken": {
+        "disableInCalc": true,
+        "name": "鸡 你 太 美",
+        "link": "https://www.bilibili.com/video/av51818204"
+    }
+}
