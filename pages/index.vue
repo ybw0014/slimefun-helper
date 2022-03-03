@@ -64,6 +64,9 @@
                         </td>
                     </tr>
                 </table>
+                <p v-if="itemResult.output && itemResult.output > 1" class="mt-2">
+                    该配方一次可制作 {{ itemResult.output }} 个
+                </p>
                 <div class="mt-2">
                     <p v-for="(recipeItem, key) in recipes" :key="key">
                         {{ String.fromCharCode('A'.charCodeAt(0) + key) }} =
@@ -119,6 +122,7 @@
 
 <script>
 import _ from 'lodash'
+import calculator from '@/utils/calculator'
 
 export default {
     layout: 'main',
@@ -139,11 +143,10 @@ export default {
             recipeTypeDisplay: '',
             recipeDisplay: [],
             recipes: {},
+            recipeOutput: {},
             //
             amount: 1,
             calculating: false,
-            calcResult: {},
-            calcDict: {},
             calcDisplay: null
         }
     },
@@ -157,32 +160,25 @@ export default {
     mounted () {
         window.addEventListener('popstate', this.routeChange)
 
-        this.item = this.$route.query.item
-        if (this.item === undefined) {
-            this.item = ''
-        }
+        this.item = _.defaultTo(this.$route.query.item, '')
 
         /* eslint-disable no-console */
-        this.$axios.get('/recipeType.json').then((response) => {
-            this.recipesJson = response.data
-        }).catch((error) => {
-            console.error('无法加载配方列表', error)
-        })
+        Promise.all([
+            this.$axios.get('/recipeType.json'),
+            this.$axios.get('/itemSettings.json'),
+            this.$axios.get('/items.json')
+        ]).then((responses) => {
+            this.recipesJson = responses[0].data
+            this.itemSettingsJson = responses[1].data
+            this.itemsJson = responses[2].data
 
-        this.$axios.get('/itemSettings.json').then((response) => {
-            this.itemSettingsJson = response.data
-        }).catch((error) => {
-            console.error('无法加载物品设置列表', error)
-        })
-
-        this.$axios.get('/items.json').then((response) => {
-            this.itemsJson = response.data
             this.itemsLoaded = true
             this.$refs.search.isDisabled = false
+            calculator.init(this.itemsJson, this.recipesJson, this.itemSettingsJson)
         }).catch((error) => {
             this.$refs.search.isDisabled = true
-            console.error('无法加载物品列表', error)
-            this.alert('danger', '无法加载物品列表')
+            console.error('无法加载物品列表以及相关设置', error)
+            this.alert('danger', '无法加载物品列表以及相关设置')
         }).then(() => {
             if (!_.isEmpty(this.item)) {
                 this.onQuery()
@@ -374,51 +370,11 @@ export default {
             }
 
             this.calculating = true
-            this.calc().then(() => {
-                this.calculating = false
-                console.log('Done')
-            })
-        },
-        calc () {
-            return new Promise(() => {
-                // calc
-                this.calcResult = {}
-
-                if (!(this.itemResult.id in this.calcDict)) {
-                    this.calcDict[this.itemResult.id] = this.itemResult.name
-                }
-                this.addToCalcResult(this.itemResult.id)
-
-                let nextItem
-                while (true) {
-                    nextItem = this.findNextItem()
-                    if (nextItem == null) {
-                        break
-                    }
-
-                    let amount = this.calcResult[nextItem.id]
-                    this.addToCalcResult(nextItem.id, -amount)
-                    _.forEach(nextItem.recipe, (recipeItem) => {
-                        if (recipeItem == null) {
-                            return true
-                        }
-                        if (!(recipeItem.material in this.calcDict)) {
-                            this.calcDict[recipeItem.material] = recipeItem.name
-                        }
-                        let recipeAmount = recipeItem.amount
-                        if (recipeAmount === undefined) {
-                            recipeAmount = 1
-                        }
-                        this.addToCalcResult(recipeItem.material, recipeAmount * amount)
-                    })
-                }
-
-                // filter result
-                this.calcResult = _.omitBy(this.calcResult, (n) => { return n === 0 })
-
+            calculator.calc(this.itemResult).then((result) => {
+                let { calcResult, calcDict } = result
                 this.calcDisplay = []
 
-                _.forEach(this.calcResult, (amount, recipeItem) => {
+                _.forEach(calcResult, (amount, recipeItem) => {
                     let currItem = null
                     _.forEach(this.itemsJson, (item) => {
                         if (item.id === recipeItem) {
@@ -428,7 +384,7 @@ export default {
                     })
                     if (currItem === null) {
                         this.calcDisplay.push({
-                            name: this.calcDict[recipeItem],
+                            name: calcDict[recipeItem],
                             amount: amount * this.amount
                         })
                     } else {
@@ -441,36 +397,8 @@ export default {
                 })
 
                 this.calculating = false
+                console.log('Done')
             })
-        },
-        findNextItem () {
-            let result = null
-            _.forEach(this.calcResult, (recipeAmount, recipeItem) => {
-                _.forEach(this.itemsJson, (item) => {
-                    if (item.id === recipeItem &&
-                        recipeAmount > 0 &&
-                        !(this?.recipesJson[item.recipeType]?.disableInCalc) &&
-                        !(this?.itemSettingsJson[item.id]?.disableInCalc)
-                    ) {
-                        result = item
-                        return false
-                    }
-                })
-                if (result !== null) {
-                    return false
-                }
-            })
-            return result
-        },
-        addToCalcResult (key, amount) {
-            if (amount === undefined) {
-                amount = 1
-            }
-            if (key in this.calcResult) {
-                this.calcResult[key] += amount
-            } else {
-                this.calcResult[key] = amount
-            }
         }
     }
 }
