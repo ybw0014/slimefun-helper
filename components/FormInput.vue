@@ -1,10 +1,14 @@
 <template>
-    <input ref="input" v-model="inputVal" class="form-input">
+    <input :type="type" ref="input" v-model="inputVal" class="form-input">
 </template>
 
 <script>
 export default {
     props: {
+        type: {
+            type: String,
+            default: 'text'
+        },
         value: {
             type: [String, Number],
             default: ''
