@@ -155,8 +155,6 @@ export default {
             return _.size(this.searchResult)
         }
     },
-    created () {
-    },
     mounted () {
         window.addEventListener('popstate', this.routeChange)
 
@@ -397,7 +395,6 @@ export default {
                 })
 
                 this.calculating = false
-                console.log('Done')
             })
         }
     }
