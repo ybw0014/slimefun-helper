@@ -164,7 +164,7 @@ export default {
         Promise.all([
             this.$axios.get('/recipeType.json'),
             this.$axios.get('/itemSettings.json'),
-            this.$axios.get('/items.json')
+            this.$axios.get('https://gzassets.cn/minecraft/plugin/slimefun/slimefun-helper/items.json')
         ]).then((responses) => {
             this.recipesJson = responses[0].data
             this.itemSettingsJson = responses[1].data
