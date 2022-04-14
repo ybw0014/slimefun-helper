@@ -178,5 +178,33 @@
         "disableInCalc": true,
         "name": "鸡 你 太 美",
         "link": "https://www.bilibili.com/video/av51818204"
+    },
+    "alchimiavitae:soul_collector_type": {
+        "disableInCalc": true,
+        "name": "灵魂收集者"
+    },
+    "alchimiavitae:divine_altar_type": {
+        "name": "神圣祭坛"
+    },
+    "alchimiavitae:ornate_cauldron_type": {
+        "name": "华丽炼药锅"
+    },
+    "alchimiavitae:infusion_altar_type": {
+        "name": "注入祭坛"
+    },
+    "crystamaehistoria:guide": {
+        "disableInSearch": true,
+        "name": "指南"
+    },
+    "crystamaehistoria:r_d_c": {
+        "disableInCalc": true,
+        "name": "现实祭坛"
+    },
+    "crystamaehistoria:l_d_c": {
+        "disableInCalc": true,
+        "name": "液化池"
+    },
+    "crystamaehistoria:nether_draining": {
+        "name": "下界祛魔"
     }
 }
