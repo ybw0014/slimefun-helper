@@ -37,6 +37,7 @@
                     <fa-icon type="solid" icon="arrow-left" />
                     返回上一页
                 </a>
+
                 <p class="para-title">
                     物品信息
                 </p>
@@ -48,6 +49,19 @@
                     <p>
                         <code>{{ itemResult.id }}</code>
                         <copy>{{ itemResult.id }}</copy>
+                    </p>
+                </div>
+
+                <p class="para-title">
+                    研究
+                </p>
+                <div>
+                    <p v-if="itemResult.research !== undefined">
+                        <code>{{ itemResult.research }}</code>
+                        <copy>{{ itemResult.research }}</copy>
+                    </p>
+                    <p v-else>
+                        无
                     </p>
                 </div>
 

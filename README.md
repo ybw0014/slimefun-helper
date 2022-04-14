@@ -6,3 +6,30 @@
 
 国内：https://slimefun-helper.guizhanss.cn  
 国外：https://slimefun-helper.guizhanss.net
+
+## 包含附属
+
+小助手目前包含以下附属的物品：
+
+- AlchimiaVitae
+- CrystamaeHistoria
+- DynaTech
+- EcoPower
+- ExtraHeads
+- ExtraTools
+- FluffyMachines
+- FoxyMachines
+- GeneticChickengineering
+- GuizhanCraft
+- HotbarPets
+- InfinityExpansion
+- LiteXpansion
+- Networks
+- SlimefunWarfare
+- SlimeTinker
+- TranscEndence
+- VillagerUtil
+
+## 联系作者
+
+如有任何建议，请加入[QQ群](https://ybw0014.net/go/sf-qgroup/)反馈。
