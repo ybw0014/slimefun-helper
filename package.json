@@ -23,7 +23,7 @@
     "vue": "2.6.14",
     "vue-clipboard2": "0.3.3",
     "vue-sweetalert2": "5.0.2",
-    "vue-tailwind": "2.5.0"
+    "vue-tailwind": "2.5.1"
   },
   "devDependencies": {
     "@babel/core": "7.17.9",
